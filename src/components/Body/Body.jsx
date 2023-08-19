@@ -20,14 +20,14 @@ export default function Body() {
         )
     }
     const [employee, setEmployee] = useState(List)
-    const [team, setTeam] = useState('select') 
-
+    const [team, setTeam] = useState('total') 
+    const [teamCount, setTeamCount] = useState(List.length)
     const handleTeamSelection = (event) => {
         let team = event.target.value
         setTeam(team)
         List = []
 
-        if(team === 'all') {
+        if(team === 'total') {
             for(let i = 0;i < Employees.length; i++) { 
                 let employee = Employees[i]
                 List.push(
@@ -61,17 +61,19 @@ export default function Body() {
             }
         }
         setEmployee(List)
+        setTeamCount(List.length)
     }
     return (
         <>
             <div className="main-body border rounded container my-2">
+                
                 <span style={{fontWeight:600}}>Members</span>
+                <h3>There are <spam>{teamCount}</spam> member/s in <spam>{team}</spam> </h3>
                 <hr />
                 
                 <div>
                     <select name="Team" id="team" value={team} onChange={handleTeamSelection}>
-                        <option value="select">choose</option>
-                        <option value="all">Members</option>
+                        <option value="total">Members</option>
                         <option value="Team - A">Team - A</option>
                         <option value="Team - B">Team - B</option>
                         <option value="Team - C">Team - C</option>
