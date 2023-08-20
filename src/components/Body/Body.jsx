@@ -67,8 +67,8 @@ export default function Body(props) {
         <>
             <div className={`main-body border-${props.mode} rounded container my-2 bg-${props.mode}`}>
                 
-                <div className={props.mode == 'dark'?'text-light d-inline':'d-inline'} style={{fontWeight:700,fontSize:'40px'}}>Members</div>
-                <h3 className={props.mode == 'dark'?'text-light':''}>There are <spam>{teamCount}</spam> member/s in <spam>{team}</spam> </h3>
+                <div className={`d-inline text-${props.mode === 'dark'?'light':'dark'} `} style={{fontWeight:700,fontSize:'40px'}}>Members</div>
+                <h3 className={`text-${props.mode === 'dark'?'light':'dark'}`}>There are <spam>{teamCount}</spam> member/s in <spam>{team}</spam> </h3>
                 <hr />
                 
                 <div>
