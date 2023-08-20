@@ -2,7 +2,7 @@ import "./styles.css"
 import { Employees } from "./Employees.js"
 import { useState } from "react"
 
-export default function Body() {
+export default function Body(props) {
 
     let List = []
     for(let i = 0;i < Employees.length; i++) { 
@@ -48,7 +48,7 @@ export default function Body() {
                 if(employee.team === team) {
                     List.push(
                         <li key={employee.id} className="my-3">
-                            <div className="card">
+                            <div className={`card bg-${props.mode}`}>
                                 <img src={employee.img} className="card-img-top" alt={employee.name} />
                                 <div className="card-body text-center mb-3">
                                     <h5 className="card-title">{employee.name}</h5>
@@ -65,10 +65,10 @@ export default function Body() {
     }
     return (
         <>
-            <div className="main-body border rounded container my-2">
+            <div className={`main-body border-${props.mode} rounded container my-2 bg-${props.mode}`}>
                 
-                <span style={{fontWeight:600}}>Members</span>
-                <h3>There are <spam>{teamCount}</spam> member/s in <spam>{team}</spam> </h3>
+                <div className={props.mode == 'dark'?'text-light d-inline':'d-inline'} style={{fontWeight:700,fontSize:'40px'}}>Members</div>
+                <h3 className={props.mode == 'dark'?'text-light':''}>There are <spam>{teamCount}</spam> member/s in <spam>{team}</spam> </h3>
                 <hr />
                 
                 <div>
